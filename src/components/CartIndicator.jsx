@@ -9,7 +9,7 @@ import { setUserNameAction } from "../redux/actions";
 const mapStateToProps = (state) => ({
   cartLength: state.cart.products.reduce((acc, currentValue) => acc + currentValue.qty,
     0),
-  firstName: state.user.firstName
+  firstName: state.user.firstName,
 })
 
 const mapDispatchToProps = (dispatch) => ({

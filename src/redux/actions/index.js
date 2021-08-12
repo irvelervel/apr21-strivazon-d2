@@ -3,10 +3,17 @@
 // that are now not just capable of returning an object, the action,
 // but they will be able now to return FUNCTIONS
 
-export const addToCartAction = (book) => ({
-  type: 'ADD_TO_CART',
-  payload: book,
-})
+export const addToCartAction = (book) => {
+  return {
+    type: 'ADD_TO_CART',
+    payload: book,
+  }
+}
+
+// export const addToCartAction = (book) => ({
+//   type: 'ADD_TO_CART',
+//   payload: book,
+// })
 
 export const addToCartActionThunk = (book) => {
   return (dispatch, getState) => {
@@ -30,12 +37,24 @@ export const fetchBooksAction = () => {
           type: 'FETCH_BOOKS',
           payload: books,
         })
+        dispatch({
+          type: 'FETCH_BOOKS_ERROR',
+          payload: false,
+        })
         console.log(getState())
       } else {
         console.log('error')
+        dispatch({
+          type: 'FETCH_BOOKS_ERROR',
+          payload: true,
+        })
       }
     } catch (error) {
       console.log(error)
+      dispatch({
+        type: 'FETCH_BOOKS_ERROR',
+        payload: true,
+      })
     }
   }
 }

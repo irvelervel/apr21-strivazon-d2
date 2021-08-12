@@ -72,7 +72,13 @@ class BookDetail extends Component {
         ) : (
           <Row>
             <Col sm={12}>
-              <h3>Please select a book!</h3>
+              {
+                this.props.books.error ? (
+                  <h3>AN ERROR OCCURRED!</h3>
+                ) : (
+                  <h3>Please select a book!</h3>
+                )
+              }
             </Col>
           </Row>
         )}
